@@ -1,4 +1,4 @@
-package com.example.firstreactspring.controller;
+package old_code;
 
 import com.example.firstreactspring.model.DataModel;
 import com.example.firstreactspring.repository.DataRepository;
@@ -9,11 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-// DataController.java
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
