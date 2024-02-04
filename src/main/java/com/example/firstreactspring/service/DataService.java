@@ -42,4 +42,8 @@ public class DataService {
             // Delete the DataModel from the database
             dataRepository.deleteById(id);
     }
+
+    public List<DataModel> searchData(String value) {
+        return dataRepository.findByDataContaining(value);
+    }
 }
