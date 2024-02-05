@@ -35,7 +35,6 @@ public class DataController {
     public void updateData(@PathVariable Long id, @RequestBody DataModel newData) {
         // Save the updated DataModel to the database
         dataService.updateData(id, newData);
-
     }
 
     @DeleteMapping("/delete/{id}")
@@ -46,9 +45,7 @@ public class DataController {
 
     @GetMapping("/search")
     public ResponseEntity<List<DataModel>> searchData(@RequestParam(required = false) String value) {
-        try {
             List<DataModel> searchResults;
-
             if (value != null && !value.isEmpty()) {
                 // Perform specific search when the value is not empty
                 searchResults = dataService.searchData(value);
@@ -56,11 +53,7 @@ public class DataController {
                 // Return all data when the value is empty
                 searchResults = dataService.getAllData();
             }
-
             return new ResponseEntity<>(searchResults, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
     }
 
 }

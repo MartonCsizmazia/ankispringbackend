@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+import static com.example.firstreactspring.model.DataModel.updatePositions;
+
 @Service
 public class DataService {
 
@@ -19,6 +21,7 @@ public class DataService {
     DataRepository dataRepository;
 
     public void saveData(DataModel newData) {
+            newData.setPositionAutomatically(dataRepository);
             // Save the new DataModel to the database
             dataRepository.save(newData);
     }
@@ -41,6 +44,8 @@ public class DataService {
     public void deleteData(Long id) {
             // Delete the DataModel from the database
             dataRepository.deleteById(id);
+            // Re-calculate positions
+            updatePositions(dataRepository);
     }
 
     public List<DataModel> searchData(String value) {
